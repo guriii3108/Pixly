@@ -21,9 +21,7 @@ export const fetchPhotos = async (query ,page=1 ,per_page=20)=>{ //
 export const fetchVideos = async(query ,per_page=15)=>{
   const response = await axios.get("https://api.pexels.com/videos/search",{
     params:{query ,per_page}, 
-    headers:{
-      Authorization:`Client-ID ${pexelsKey}`
-    }
+    headers:{Authorization:pexelsKey}
   });
   return response.data;
 }
