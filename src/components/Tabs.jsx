@@ -12,19 +12,28 @@ const Tabs = () => {
     { id: 3, name: "Videos", icon: "📹" },
   ];
   return (
-    <div className="flex gap-10 p-5">
-      {tabs.map((tab) => {
-        return (
-          <button
-            onClick={() => dispatch(setActiveTab(tab.name))}
-            
-            key={tab.id}
-            className={`p-2 rounded-md flex items-center gap-2 cursor-pointer hover:scale-105 hover:shadow-lg hover:shadow-blue-500  transition-all duration-300 ease-in-out hover:text-white  ${activeTab === tab.name ? "bg-blue-500 text-white" : "bg-zinc-700"}`}
-          >
-            {tab.name}
-          </button>
-        );
-      })}
+    <div className="flex justify-center py-6">
+      <div className="flex gap-2 p-2 bg-zinc-800/80 backdrop-blur-md rounded-full border border-zinc-700/50 shadow-xl">
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.name;
+          return (
+            <button
+              onClick={() => dispatch(setActiveTab(tab.name))}
+              key={tab.id}
+              className={`
+                relative px-6 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition-all duration-300 ease-out
+                ${isActive
+                  ? "bg-linear-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 scale-105"
+                  : "text-zinc-400 hover:text-white hover:bg-zinc-700/50"
+                }
+              `}
+            >
+              <span className="text-lg">{tab.icon}</span>
+              <span>{tab.name}</span>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };
