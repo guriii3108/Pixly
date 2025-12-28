@@ -1,12 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { addCollection } from '../../redux/slices/collectionSlice'
+import { addCollection, addedToast } from '../../redux/slices/collectionSlice'
 
 const ResultCard = ({ item }) => {
 
   const dispatch = useDispatch()
   const addToCollection = (item) => {
     dispatch(addCollection(item))
+    dispatch(addedToast())
   }
   return (
     <div className='group relative w-full h-64 bg-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1'>
